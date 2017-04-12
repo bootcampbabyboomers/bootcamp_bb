@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<%= @blog_post.title %>
+		</div>
+		<div class="panel-body">
+			<p><%= link_to @blog_post.user.username, user_posts_path(id: @blog_post.user.id) %></p>
+			<p><%= @blog_post.blog_entry %></p>
+		</div>
+
+		 <% if current_user.id == @blog_post.user.id %>
+        <div class="panel-footer">
+          <%= link_to "Edit", edit_blog_post_path(@blog_post), class: "btn btn-warning" %>
+          <%= link_to "Delete", @blog_post, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+        </div>
+        <% end %>
+	</div>
